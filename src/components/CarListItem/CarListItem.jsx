@@ -6,14 +6,21 @@ import {
   CardContent,
   CardMedia,
   Grid,
-  Icon,
+  SvgIcon,
   Typography,
 } from "@mui/material";
-import FavoriteIcon from "@mui/icons-material/FavoriteBorder";
+import Heart from "../Heart/Heart.jsx";
 import { useState } from "react";
 import ModalWindow from "../ModalWindow/ModalWindow";
+import { toggleFavorites } from "../../redux/Favorites/slice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/selectors.js";
 
 const CarListItem = ({ car }) => {
+  const dispatch = useDispatch();
+  const likedCars = useSelector(selectFavorites);
+  const likedCarsIds = likedCars.map((like) => like.id);
+  const isLiked = likedCarsIds.includes(car.id);
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -24,7 +31,6 @@ const CarListItem = ({ car }) => {
     el.length > 20 ? el.substring(0, 20) : el
   );
   const accessories = truncatedAccessories[0];
-
   return (
     <>
       <Grid item sx={{ mb: 3 }}>
@@ -34,18 +40,18 @@ const CarListItem = ({ car }) => {
             position: "relative",
             boxShadow: "none",
           }}>
-          <Icon
+          <SvgIcon
+            onClick={() => dispatch(toggleFavorites(car))}
             sx={{
-              color: "white",
               position: "absolute",
               right: "10px",
               top: "10px",
               "&:hover": { scale: "1.1" },
             }}>
-            <FavoriteIcon />
-          </Icon>
+            <Heart isActive={isLiked} />
+          </SvgIcon>
           <CardMedia
-            sx={{ height: 268, borderRadius: 4 }}
+            sx={{ height: 268, borderRadius: 4, objectFit: "fill" }}
             image={car.img}
             component="img"
           />
@@ -102,7 +108,7 @@ const CarListItem = ({ car }) => {
               }}
               variant="contained"
               onClick={handleOpen}>
-              Learn more...
+              Learn more
             </Button>
           </CardActions>
         </Card>

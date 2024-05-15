@@ -1,10 +1,6 @@
-import { useDispatch, useSelector } from "react-redux";
-import { getCarsThunk } from "../../redux/Cars/operations";
-import { selectCars } from "../../redux/Cars/selectors";
-import { useEffect } from "react";
 import Typography from "@mui/material/Typography";
 import Box from "@mui/material/Box";
-import { Button, Toolbar } from "@mui/material";
+import { Button } from "@mui/material";
 import { NavLink } from "react-router-dom";
 
 const HomePage = () => {

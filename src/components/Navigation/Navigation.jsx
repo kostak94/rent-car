@@ -1,14 +1,13 @@
 import { NavLink } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
-import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
-import Button from "@mui/material/Button";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import { Badge, MenuItem } from "@mui/material";
+import { useSelector } from "react-redux";
+import { selectFavorites } from "../../redux/selectors";
 
 const Navigation = () => {
+  const favorites = useSelector(selectFavorites);
   return (
     <header>
       <AppBar component="nav">
@@ -36,7 +35,7 @@ const Navigation = () => {
           </MenuItem>
           <MenuItem>
             <Typography variant="h5">
-              <Badge badgeContent={1} color="success">
+              <Badge badgeContent={favorites.length} color="success">
                 <NavLink
                   style={{ color: "white", textDecoration: "none" }}
                   to="favorites">

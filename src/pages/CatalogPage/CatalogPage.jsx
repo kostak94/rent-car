@@ -1,7 +1,13 @@
 import CarList from "../../components/CarList/CarList";
+import FilterForm from "../../components/FilterForm/FilterForm";
 
 const CatalogPage = () => {
-  return <CarList />;
+  return (
+    <>
+      <FilterForm />
+      <CarList />;
+    </>
+  );
 };
 
 export default CatalogPage;
