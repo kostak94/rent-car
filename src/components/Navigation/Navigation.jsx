@@ -23,7 +23,7 @@ const Navigation = () => {
             <Typography variant="h5">
               <NavLink
                 className={activeStyleLink}
-                style={{ color: "white", textDecoration: "none" }}
+                style={{ color: "lightgrey", textDecoration: "none" }}
                 to="/">
                 Home
               </NavLink>
@@ -33,7 +33,7 @@ const Navigation = () => {
             <Typography variant="h5">
               <NavLink
                 className={activeStyleLink}
-                style={{ color: "white", textDecoration: "none" }}
+                style={{ color: "lightgrey", textDecoration: "none" }}
                 to="catalog">
                 Catalog
               </NavLink>
@@ -44,7 +44,7 @@ const Navigation = () => {
               <Badge badgeContent={favorites.length} color="success">
                 <NavLink
                   className={activeStyleLink}
-                  style={{ color: "white", textDecoration: "none" }}
+                  style={{ color: "lightgrey", textDecoration: "none" }}
                   to="favorites">
                   Favorites
                 </NavLink>
