@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Typography from "@mui/material/Typography";
@@ -8,6 +9,9 @@ import { selectFavorites } from "../../redux/selectors";
 
 const Navigation = () => {
   const favorites = useSelector(selectFavorites);
+  const activeStyleLink = ({ isActive }) => {
+    return clsx(isActive && "active");
+  };
   return (
     <header>
       <AppBar component="nav">
@@ -18,6 +22,7 @@ const Navigation = () => {
           <MenuItem>
             <Typography variant="h5">
               <NavLink
+                className={activeStyleLink}
                 style={{ color: "white", textDecoration: "none" }}
                 to="/">
                 Home
@@ -27,6 +32,7 @@ const Navigation = () => {
           <MenuItem>
             <Typography variant="h5">
               <NavLink
+                className={activeStyleLink}
                 style={{ color: "white", textDecoration: "none" }}
                 to="catalog">
                 Catalog
@@ -37,6 +43,7 @@ const Navigation = () => {
             <Typography variant="h5">
               <Badge badgeContent={favorites.length} color="success">
                 <NavLink
+                  className={activeStyleLink}
                   style={{ color: "white", textDecoration: "none" }}
                   to="favorites">
                   Favorites
